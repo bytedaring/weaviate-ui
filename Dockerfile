@@ -12,7 +12,7 @@ COPY --from=builder /app/dist /app/static
 
 COPY . .
 
-RUN pip install poetry
+RUN pip install poetry -i https://pypi.tuna.tsinghua.edu.cn/simple
 COPY poetry.lock pyproject.toml ./
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
 COPY . .

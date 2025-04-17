@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python Debugger: FastAPI",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload"
+            ],
+            "jinja": true,
+            "console": "integratedTerminal", 
+            "env": {
+              "WEAVIATE_API_KEYS": "wvf5yThaHlkYwhGUSmCRgsX3tD5ngdN8pkih",
+              "WEAVIATE_URL": "http://localhost:8080" 
+            },
+            "python": "${command:python.interpreterPath}" // 明确使用 VS Code 当前选择的解释器
+        }
+    ]
+}
