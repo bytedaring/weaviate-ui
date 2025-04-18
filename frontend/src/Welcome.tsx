@@ -1,19 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {getSchema} from "./api";
-import {ProColumns, ProTable} from "@ant-design/pro-components";
+import React, { useEffect, useState } from "react";
+import { getSchema } from "./api";
+import { ProColumns, ProTable } from "@ant-design/pro-components";
 import ReactJson from 'react-json-view'
 
 export default function () {
     const [schemas, setSchemas] = useState([])
     useEffect(() => {
-            getSchema().then((schemas) => {
-
-
-                    setSchemas(schemas.classes)
-                }
-            )
-        }
-        , [])
+        getSchema().then((schemas) => {
+            setSchemas(schemas.classes)
+        })
+    }, [])
     // transform from foreach to map of below
     const tableListDataSource = schemas.map((schema: any) => ({
         className: schema.class,
@@ -22,7 +18,7 @@ export default function () {
         vectorizer: schema.vectorizer,
         key: schema.class,
         detail: schema
-    }));
+    })).sort((a: any, b: any) => a.className.localeCompare(b.className))
     const columns: ProColumns<any>[] = [
         {
             title: 'Class',
@@ -44,7 +40,7 @@ export default function () {
             title: 'Detail',
             dataIndex: 'detail',
             render: (_, record) => {
-                return <ReactJson src={record.detail} collapsed={0} enableClipboard={false} displayDataTypes={false}/>
+                return <ReactJson src={record.detail} collapsed={0} enableClipboard={false} displayDataTypes={false} />
             }
         }
 

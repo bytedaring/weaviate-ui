@@ -1,14 +1,25 @@
 version: '3.8'
 
+# services:
+#   myapp:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "7777:7777"
+#     environment:
+#       - WEAVIATE_URL=http://192.168.20.162:9090
+#       - WEAVIATE_API_KEYS=wvf5yThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
+#       - WEAVIATE_USERS=admin
+# apt update -y && apt install curl -y
+
 services:
-  myapp:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  weaviate_ui:
+    #image: naaive/weaviate-ui:latest
+    image: weaviate-ui:0.0.5
     ports:
       - "7777:7777"
     environment:
       - WEAVIATE_URL=http://192.168.20.162:9090
-      - WEAVIATE_API_KEYS=wvf5yThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
-      - WEAVIATE_USERS=admin
-# apt update -y && apt install curl -y
+      - WEAVIATE_API_KEYS=wvF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
+      - WEAVIATE_USERS=root
